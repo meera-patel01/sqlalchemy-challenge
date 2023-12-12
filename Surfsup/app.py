@@ -5,11 +5,14 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect
 from flask import Flask, jsonify
+import os
 
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///Surfsup\Resources\hawaii.sqlite")
+path = os.path.join(".", "Resources", "hawaii.sqlite")
+engine_path = "sqlite:///" + path 
+engine = create_engine(engine_path)
 
 # reflect an existing database into a new model
 Base = automap_base()
